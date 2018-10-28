@@ -25,15 +25,15 @@ cd Aequilibrium-Assignment
 We have two kinds of dependencies in this project: tools and Javascript code. The tools help us manage and test the application.
 
 We get the tools we depend upon via npm, the Node package manager.
-'''
+```
 npm install
-'''
+```
 node_modules - contains the npm packages for the tools we need
 
 ## Running Unit Tests
 The Aequilibrium-Assignment app comes preconfigured with unit tests. These are written in Jtest. 
 The unit tests are found inside test folder and have an test.js suffix (e.g. castle.test.js).
 The easiest way to run the unit tests is to use the supplied npm script:
-'''
+```
 npm test
-'''
+```
