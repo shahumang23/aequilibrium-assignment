@@ -1,5 +1,5 @@
 # Aequilibrium Assignment:- Angular version 9.1.2
-
+https://shahumang23.github.io/aequilibrium-assignment/
 ## Requirements
 
 ### The Castle Company
