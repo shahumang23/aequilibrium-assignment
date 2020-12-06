@@ -1,4 +1,4 @@
-# 'Aequilibrium Assignment':- Angular version 9.1.2.
+# Aequilibrium Assignment:- Angular version 9.1.2.
 
 ## Requirements
 
