@@ -1,0 +1,34 @@
+@import "helpers/variables";
+@import "helpers/mixins";
+
+:host {
+  .textarea-header-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: $spacing-xs;
+
+    .textarea-field-label {
+      @include primary-small-text();
+      font-weight: bold;
+    }
+  }
+
+  textarea {
+    @include global-input();
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  &.error {
+    .textarea-header-label {
+      .textarea-field-label {
+        color: $color-status-error;
+      }
+    }
+
+    textarea {
+      color: $color-status-error;
+      border-bottom: 1px solid $color-status-error !important;
+    }
+  }
+}

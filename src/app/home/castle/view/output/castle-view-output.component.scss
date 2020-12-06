@@ -1,0 +1,23 @@
+@import "helpers/mixins";
+@import "helpers/variables";
+
+:host {
+  border: 1px dotted $color-accent-primary;
+  padding: $spacing-l;
+
+  .main-container {
+    display: flex;
+    justify-content: center;
+
+    .elements-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+
+    .no-data {
+      @include secondary-header();
+      align-items: center;
+    }
+  }
+}

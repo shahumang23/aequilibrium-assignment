@@ -1,0 +1,35 @@
+@import "helpers/variables";
+@import "helpers/mixins";
+
+:host {
+  background-color: $color-surface-secondary;
+  padding: $spacing-s;
+
+  ::ng-deep {
+    .error {
+      @include primary-small-text($color-status-error);
+      display: flex;
+      flex-direction: column;
+      margin-top: $spacing-xs;
+
+      .header {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .example {
+        font-weight: bold;
+        display: flex;
+        flex-direction: column;
+        margin-top: $spacing-xs;
+        line-height: 24px;
+      }
+    }
+
+    ctrl-text-area {
+      textarea {
+        min-height: 80px;
+      }
+    }
+  }
+}

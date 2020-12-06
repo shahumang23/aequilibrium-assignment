@@ -1,0 +1,49 @@
+@import "helpers/mixins";
+@import "helpers/variables";
+
+:host {
+  margin: 2px;
+  display: flex;
+  flex-direction: column;
+
+  .castle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:#FF8C00	;
+    &.peak {
+      font-weight: bold;
+      color:#FF4500;
+    }
+  }
+
+  .element {
+    border: 1px dotted $color-accent-primary;
+    min-width: 24px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    .value {
+      background-color: $color-accent-secondary;
+      color: $color-text-accent-primary;
+      position: relative;
+      bottom: -28px;
+      min-width: 24px;
+      min-height: 24px;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+    }
+
+    &.castle-peak {
+      background-color: #FF7F50;
+      border: 1px solid $color-status-success;
+    }
+
+    &.castle-valley {
+      background-color: #FFD700;
+      border: 1px solid $color-status-success;
+    }
+  }
+}

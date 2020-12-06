@@ -1,0 +1,101 @@
+<div
+  *ngIf="{
+    hasData: (hadData$ | async),
+    teamsValid: (teamsAreValid$ | async)
+  } as scope"
+  class="main-container">
+
+  <div class="elements-container">
+    <ng-container
+      *ngTemplateOutlet="scope.hasData
+        ? (scope.teamsValid ? view : noTeamData)
+        : noData">
+    </ng-container>
+  </div>
+</div>
+
+<ng-container *ngIf="(battleResults$ | async) as results">
+  <div class="battle-results">
+    <header>
+      <span>Battle results</span>
+      <span *ngIf="results.status">{{results.status}}</span>
+      <span>Total Battles: {{results.numberOfBattles}}</span>
+    </header>
+    <main *ngIf="results.numberOfBattles">
+      <ng-container *ngTemplateOutlet="resultView; context {
+        label: 'Winning team',
+        team: results?.winningTeam
+      }">
+      </ng-container>
+      <ng-container *ngTemplateOutlet="resultView; context {
+        label: 'Survivors from the loosing team',
+        team: results?.loosingTeam
+      }">
+      </ng-container>
+    </main>
+  </div>
+</ng-container>
+
+<ng-template #resultView let-label="label" let-team="team">
+  <div
+    *ngIf="team?.team"
+    class="team-status">
+    {{label}} ({{teamLabel[team?.team]}}): {{teamMembers(team)}}
+  </div>
+</ng-template>
+
+<ng-template #view>
+  <div class="transformer-teams">
+    <ng-container *ngTemplateOutlet="transformerTeamView;
+      context { transformers: (teamAutobots$ | async), team: 'Autobots' }"></ng-container>
+    <ng-container *ngTemplateOutlet="transformerTeamView;
+      context { transformers: (teamDecepticons$ | async), team: 'Decepticons' }"></ng-container>
+  </div>
+</ng-template>
+
+<ng-template #transformerTeamView let-transformers="transformers" let-team="team">
+  <div class="transformer-team">
+    <header>
+      {{team}}
+    </header>
+    <main>
+      <div *ngFor="let transformer of transformers" class="transformer">
+        <ng-container *ngTemplateOutlet="transformerView; context { transformer: transformer }"></ng-container>
+      </div>
+    </main>
+  </div>
+</ng-template>
+
+<ng-template #transformerView let-transformer="transformer">
+  <header>
+    <span>{{transformer.name}}</span>
+    <span>{{transformer.stats.rank}}</span>
+  </header>
+  <main>
+    <div class="rating">
+      {{transformer.rating}}
+    </div>
+    <div class="stats">
+      <div
+        *ngFor="let stat of stats(transformer)"
+        class="stat">
+        <span class="stat-name">{{stat.name}}</span>
+        <span class="stat-value">
+          <span class="value" [style.width.px]="stat.value * 10">
+            {{stat.value}}
+          </span>
+          <span class="value-mask" [style.width.px]="100 - (stat.value * 10)"></span>
+        </span>
+      </div>
+    </div>
+  </main>
+  <footer [class.destroyed]="isDestroyed(transformer)" [class.survivor]="isSurvivor(transformer)"></footer>
+</ng-template>
+
+<ng-template #noData>
+  <span class="no-data">No Data</span>
+</ng-template>
+
+<ng-template #noTeamData>
+  <span class="no-data">Both teams must have Transformers</span>
+</ng-template>

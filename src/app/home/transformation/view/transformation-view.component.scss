@@ -1,0 +1,17 @@
+@import "helpers/variables";
+
+:host {
+  width: 100%;
+
+  section {
+    display: flex;
+    flex-direction: column;
+    padding: $spacing-s;
+    overflow-y: auto;
+    background-color: $color-surface-primary;
+
+    cmp-transformation-view-output {
+      margin-top: $spacing-s;
+    }
+  }
+}

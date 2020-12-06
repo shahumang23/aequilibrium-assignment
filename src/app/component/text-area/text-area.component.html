@@ -1,0 +1,26 @@
+<div
+  *ngIf="maxLength || label"
+  class="textarea-header-label">
+
+  <span class="textarea-field-label">
+    {{label}}
+  </span>
+
+  <span
+    *ngIf="maxLength"
+    class="textarea-field-label">
+    Character Count: {{inputLength}} (Max: {{maxLength}})
+  </span>
+</div>
+<textarea
+  #textArea
+  aria-label="textarea-input"
+  [attr.maxlength]="maxLength"
+  [placeholder]="placeholder"
+  (input)="onInput()"
+  (blur)="onModelTouched()">
+</textarea>
+
+<ng-container *ngIf="showError">
+  <ng-container *ngTemplateOutlet="errorTemplate"></ng-container>
+</ng-container>

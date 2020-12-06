@@ -1,0 +1,109 @@
+@import "variables";
+@import "utils";
+
+@mixin placeholder() {
+  &::placeholder {
+    @content;
+  }
+
+  &::-webkit-input-placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder {
+    @content;
+  }
+
+  &::-moz-placeholder {
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+@mixin text-truncate() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin default-header() {
+  display: flex;
+  padding: $spacing-xs;
+  background-color: $color-surface-primary;
+  border-bottom: 1px solid $color-accent-primary;
+}
+
+// Typography
+@mixin primary-header($color: $color-text-primary) {
+  color: $color;
+  font-family: $font-family-secondary;
+  font-size: rem(32px);
+  line-height: 40px;
+}
+
+@mixin secondary-header($color: $color-text-primary) {
+  color: $color;
+  font-family: $font-family-secondary;
+  font-size: rem(20px);
+  line-height: 32px;
+}
+
+@mixin primary-body($color: $color-text-primary) {
+  color: $color;
+  font-family: $font-family-primary;
+  font-size: rem(16px);
+  line-height: 24px;
+}
+
+@mixin secondary-body($color: $color-text-primary) {
+  color: $color;
+  font-family: $font-family-primary;
+  font-size: rem(14px);
+  line-height: 24px;
+}
+
+@mixin global-input() {
+  color: $color-input;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid $color-accent-primary !important;
+  width: 100%;
+
+  &:focus,
+  &:hover,
+  &:active {
+    border-bottom: 1px solid $color-accent-primary !important;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+  }
+}
+
+@mixin primary-small-text($color: $color-text-primary) {
+  color: $color;
+  font-family: $font-family-primary;
+  font-size: rem(11px);
+  line-height: 16px;
+  letter-spacing: 1px;
+}
+
+@mixin flat-input() {
+  @include primary-body();
+  @include global-input();
+  height: 40px;
+  padding: $spacing-xs $spacing-s $spacing-xs 0;
+}
+
+@mixin badge() {
+  @include primary-small-text($color-text-accent-primary);
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  background: $color-accent-secondary;
+  line-height: 24px;
+  padding: 0 $spacing-xs;
+}

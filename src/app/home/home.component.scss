@@ -1,0 +1,34 @@
+@import "helpers/variables";
+
+:host {
+  width: 100%;
+
+  section {
+    display: flex;
+    flex-direction: row;
+    padding: $spacing-m $spacing-l;
+    background-color: $color-surface-secondary;
+    justify-content: center;
+
+    button {
+      text-transform: capitalize;
+    }
+
+    button + button {
+      margin-top: 0;
+      margin-left: $spacing-s;
+    }
+  }
+
+  @media #{$media-mobile-tablet} {
+    section {
+      flex-direction: column;
+      padding: $spacing-m $spacing-s $spacing-s;
+
+      button + button {
+        margin-top: $spacing-s;
+        margin-left: 0;
+      }
+    }
+  }
+}

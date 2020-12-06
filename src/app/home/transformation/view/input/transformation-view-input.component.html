@@ -1,0 +1,24 @@
+<ng-container [formGroup]="form">
+  <text-area
+    #textArea
+    [class.error]="!form.valid && !textArea.isEmpty"
+    label="Enter data"
+    [formControlName]="dataControlName"
+    [maxLength]="maxLength">
+
+    <ng-template ctrlTemplate="{{textArea.errorTemplateName}}" [show]="!form.valid && !textArea.isEmpty">
+      <span class="error">
+        <div class="header">
+          <span>Valid input should be formatted as shown below, one definition per line</span>
+          <span>Each transformer can be Autobot [A] or Decepticon [D], with 8 comma separated integers ranging from 1-10</span>
+        </div>
+        <div class="example">
+          <span>Soundwave,D,8,9,2,6,7,5,6,10</span>
+          <span>Bluestreak,A,6,6,7,9,5,2,9,7</span>
+          <span>Hubcap, A,4,4,4,4,4,4,4,4</span>
+          <span>etc.</span>
+        </div>
+      </span>
+    </ng-template>
+  </text-area>
+</ng-container>

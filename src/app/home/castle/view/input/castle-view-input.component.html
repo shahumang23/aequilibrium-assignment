@@ -1,0 +1,16 @@
+<ng-container [formGroup]="form">
+  <text-area
+    #textArea
+    [class.error]="!form.valid && !textArea.isEmpty"
+    label="Enter data"
+    placeholder="3,6,6,6,3,..."
+    [formControlName]="dataControlName"
+    [maxLength]="maxLength">
+
+    <ng-template ctrlTemplate="{{textArea.errorTemplateName}}" [show]="!form.valid && !textArea.isEmpty">
+      <span class="error">
+        Invalid input! Please enter comma separated positive number. And minimum 2 values required.
+      </span>
+    </ng-template>
+  </text-area>
+</ng-container>

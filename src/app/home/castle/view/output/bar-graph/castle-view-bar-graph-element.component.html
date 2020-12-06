@@ -1,0 +1,7 @@
+<span *ngIf="isCastle"
+  class="castle" [class.peak]="isLargeCastle">
+  x
+</span>
+<div class="element" [style.height.px]="height" [class.castle-peak]="isPeak" [class.castle-valley]="isValley">
+  <span class="value">{{value.height}}</span>
+</div>

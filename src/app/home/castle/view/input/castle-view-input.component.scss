@@ -1,0 +1,15 @@
+@import "helpers/variables";
+@import "helpers/mixins";
+
+:host {
+  background-color: $color-surface-secondary;
+  padding: $spacing-s;
+
+  ::ng-deep {
+    .error {
+      @include primary-small-text($color-status-error);
+      margin-top: $spacing-xs;
+      margin-bottom: $spacing-xs;
+    }
+  }
+}

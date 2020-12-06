@@ -1,0 +1,47 @@
+@import "helpers/variables";
+@import "helpers/mixins";
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: $font-family-primary;
+  font-size: rem(10px);
+}
+
+button {
+  cursor: pointer;
+  outline: none;
+  color: $color-text-accent-primary;
+  background-color: $color-accent-primary;
+  border: 1px solid $color-accent-primary;
+  border-radius: 5px;
+  padding: $spacing-xs $spacing-l;
+
+  &:not(:disabled) {
+    &:focus,
+    &:hover {
+      background-color: $color-accent-secondary;
+    }
+    &:active {
+      background-color: $color-surface-secondary;
+      color: $color-text-primary
+    }
+  }
+}
+
+input,
+textarea {
+  appearance: none;
+  outline: none;
+  box-shadow: none;
+}
+
+input[type="text"], textarea {
+  @include placeholder() {
+    color: $color-text-disabled;
+  }
+}
+
+@include initialize-default-theme();

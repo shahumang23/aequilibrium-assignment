@@ -1,0 +1,146 @@
+@import "helpers/mixins";
+@import "helpers/variables";
+
+:host {
+  border: 1px dotted $color-accent-primary;
+  padding: $spacing-s;
+
+  .main-container {
+    display: flex;
+    justify-content: center;
+
+    .elements-container {
+      display: flex;
+      justify-content: center;
+
+      .transformer-teams {
+        display: flex;
+        justify-content: space-between;
+
+        .transformer-team {
+          display: flex;
+          flex-direction: column;
+
+          header {
+            @include primary-body();
+            padding-bottom: $spacing-xs;
+          }
+
+          .transformer {
+            header {
+              display: flex;
+              justify-content: space-between;
+              @include secondary-body();
+              font-weight: bold;
+              padding: $spacing-xs;
+              background-color: $color-accent-secondary;
+              color: $color-text-accent-primary;
+            }
+
+            main {
+              display: flex;
+
+              .rating {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-width: 50px;
+                @include secondary-header();
+                font-weight: bold;
+              }
+
+              .stats {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                border-left: 1px dotted $color-accent-secondary;
+                padding: 4px 0 4px $spacing-xs;
+
+                .stat {
+                  display: flex;
+                  justify-content: space-between;
+
+                  .stat-name {
+                    text-transform: capitalize;
+                    min-width: 100px;
+                    font-weight: 300;
+                  }
+
+                  .stat-value {
+                    width: 100px;
+                    display: flex;
+                    background-image: linear-gradient(to right, yellow , red);
+
+                    .value {
+                      display: flex;
+                      background: transparent;
+                      padding-left: $spacing-xs;
+                    }
+
+                    .value-mask {
+                      background: $color-surface-primary;
+                    }
+                  }
+                }
+
+                .stat + .stat {
+                  margin-top: 2px;
+                }
+              }
+            }
+
+            footer {
+              background-color: #288500;
+              height: 10px;
+
+              &.destroyed {
+                background-color: #E02D30;
+              }
+
+              &.survivor {
+                background-color: #FFD500;
+              }
+            }
+          }
+
+          .transformer + .transformer {
+            margin-top: $spacing-xs;
+          }
+        }
+
+        .transformer-team + .transformer-team {
+          margin-left: 150px;
+        }
+      }
+    }
+
+    .no-data {
+      @include secondary-header();
+      align-items: center;
+    }
+  }
+
+  .battle-results {
+    margin-top: $spacing-m;
+    border-top: 1px dotted;
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      @include primary-body();
+      padding: $spacing-xs;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      padding: $spacing-xs;
+
+      .team-status {
+        display: flex;
+        flex-direction: column;
+        @include secondary-body();
+      }
+    }
+  }
+}
