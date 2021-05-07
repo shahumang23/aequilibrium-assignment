@@ -21,7 +21,7 @@
     "@angular/router": "9.1.2",
     "@thisissoon/angular-inviewport": "4.2.2",
     "eslint-html-reporter": "0.7.4",
-    "lodash": "4.17.15",
+    "lodash": "4.17.21",
     "rxjs": "6.5.5",
     "tslib": "1.11.1",
     "zone.js": "0.10.3"
